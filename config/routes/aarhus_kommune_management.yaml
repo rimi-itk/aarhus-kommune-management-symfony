@@ -1,0 +1,2 @@
+aarhus_kommune_management:
+    resource: '@AarhusKommuneManagementBundle/Resources/config/routes.xml'

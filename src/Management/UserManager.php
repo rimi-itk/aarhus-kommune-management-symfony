@@ -11,12 +11,23 @@
 namespace App\Management;
 
 use ItkDev\AarhusKommuneManagementBundle\Management\AbstractUserManager;
+use FOS\UserBundle\Doctrine\UserManager as FOSUserManager;
 
 class UserManager extends AbstractUserManager
 {
+    /** @var FOSUserManager */
+    private $userManager;
+
+    public function __construct(FOSUserManager $userManager)
+    {
+        $this->userManager = $userManager;
+    }
+
     public function getUsers()
     {
-        // TODO: Implement getUsers() method.
+        $users = $this->userManager->findUsers();
+
+        return $users;
     }
 
     public function createUser(array $data)
@@ -36,6 +47,8 @@ class UserManager extends AbstractUserManager
 
     public function serializeUser($user)
     {
-        // TODO: Implement serializeUser() method.
+        return [
+            'email' => $user->getEmail(),
+        ];
     }
 }
