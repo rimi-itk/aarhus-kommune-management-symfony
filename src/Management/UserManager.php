@@ -10,17 +10,32 @@
 
 namespace App\Management;
 
+use App\Entity\User;
+use FOS\UserBundle\Model\UserManagerInterface;
 use ItkDev\AarhusKommuneManagementBundle\Management\AbstractUserManager;
-use FOS\UserBundle\Doctrine\UserManager as FOSUserManager;
+use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 class UserManager extends AbstractUserManager
 {
-    /** @var FOSUserManager */
+    /**
+     * Key => user property.
+     *
+     * @var array
+     */
+    private static $properties = [
+        'email' => 'email',
+    ];
+
+    /** @var UserManagerInterface */
     private $userManager;
 
-    public function __construct(FOSUserManager $userManager)
+    /** @var PropertyAccessorInterface */
+    private $propertyAccessor;
+
+    public function __construct(UserManagerInterface $userManager, PropertyAccessorInterface $propertyAccessor)
     {
         $this->userManager = $userManager;
+        $this->propertyAccessor = $propertyAccessor;
     }
 
     public function getUsers()
@@ -37,7 +52,25 @@ class UserManager extends AbstractUserManager
 
     public function updateUser(array $data)
     {
-        // TODO: Implement updateUser() method.
+        $uuid = $data['uuid'] ?? '';
+        $user = $this->getUser($uuid);
+        if (null === $user) {
+            return [$uuid => 'No such user'];
+        }
+
+        foreach (self::$properties as $key => $property) {
+            if (isset($data[$key]) && $this->propertyAccessor->isWritable($user, $property)) {
+                $this->propertyAccessor->setValue($user, $property, $data[$key]);
+            }
+        }
+
+        try {
+            $this->userManager->updateUser($user);
+
+            return [$uuid => 'User updated'];
+        } catch (\Exception $exception) {
+            return [$uuid => $exception->getMessage()];
+        }
     }
 
     public function deleteUser(array $data)
@@ -47,8 +80,28 @@ class UserManager extends AbstractUserManager
 
     public function serializeUser($user)
     {
-        return [
-            'email' => $user->getEmail(),
+        $data = [
+            'uuid' => $this->getUuid($user),
         ];
+
+        foreach (self::$properties as $key => $property) {
+            $data[$key] = $this->propertyAccessor->getValue($user, $property);
+        }
+
+        return $data;
+    }
+
+    private function getUuid(User $user)
+    {
+        return 'user:'.$user->getId();
+    }
+
+    private function getUser($uuid)
+    {
+        if (preg_match('/user:(?<id>.+)/', $uuid, $matches)) {
+            return $this->userManager->findUserBy(['id' => $matches['id']]);
+        }
+
+        return null;
     }
 }

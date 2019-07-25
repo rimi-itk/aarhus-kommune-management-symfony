@@ -1649,12 +1649,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rimi-itk/aarhus-kommune-management-bundle.git",
-                "reference": "88b382b58a42aaf4c13f56176a8cbc772946e1d1"
+                "reference": "f3c63ae9ce5302f7c2a570bc395c9fe17b778896"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rimi-itk/aarhus-kommune-management-bundle/zipball/88b382b58a42aaf4c13f56176a8cbc772946e1d1",
-                "reference": "88b382b58a42aaf4c13f56176a8cbc772946e1d1",
+                "url": "https://api.github.com/repos/rimi-itk/aarhus-kommune-management-bundle/zipball/f3c63ae9ce5302f7c2a570bc395c9fe17b778896",
+                "reference": "f3c63ae9ce5302f7c2a570bc395c9fe17b778896",
                 "shasum": ""
             },
             "require": {
@@ -1695,7 +1695,7 @@
                 "source": "https://github.com/rimi-itk/aarhus-kommune-management-bundle/tree/4.x",
                 "issues": "https://github.com/rimi-itk/aarhus-kommune-management-bundle/issues"
             },
-            "time": "2019-07-23T08:38:36+00:00"
+            "time": "2019-07-25T13:16:26+00:00"
         },
         {
             "name": "jdorn/sql-formatter",

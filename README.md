@@ -1,5 +1,7 @@
 # aarhus-kommune-management-symfony
 
+https://github.com/rimi-itk/aarhus-kommune-management-bundle
+
 ```sh
 docker-compose up --detach
 docker-compose exec phpfpm composer install
