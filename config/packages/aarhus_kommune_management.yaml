@@ -1,0 +1,6 @@
+services:
+    itk_dev_aarhus_kommune_management.management.user_manager:
+        class: 'App\Management\UserManager'
+        arguments:
+            - '@fos_user.user_manager'
+            - '@property_accessor'

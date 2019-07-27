@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of itk-dev/aarhus-kommune-management-symfony-4.
+ *
+ * (c) 2019 ITK Development
+ *
+ * This source file is subject to the MIT license.
+ */
+
 use Symfony\Component\Dotenv\Dotenv;
 
 require dirname(__DIR__).'/vendor/autoload.php';
@@ -29,7 +37,7 @@ if (is_array($env = @include dirname(__DIR__).'/.env.local.php')) {
         }
 
         if (null === $env = $_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? null) {
-            $dotenv->populate(array('APP_ENV' => $env = 'dev'));
+            $dotenv->populate(['APP_ENV' => $env = 'dev']);
         }
 
         if ('test' !== $env && file_exists($p = "$path.local")) {
