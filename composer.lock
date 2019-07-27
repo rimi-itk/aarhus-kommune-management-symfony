@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb87d1d0a0b728b49fc279dc0770930f",
+    "content-hash": "4c2b11b23228dbe360a98db8289807b6",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -1646,10 +1646,16 @@
         {
             "name": "itk-dev/aarhus-kommune-management-bundle",
             "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rimi-itk/aarhus-kommune-management-bundle.git",
+                "reference": "e1a05d2276d4a03ff255f817bbfc3a8beee9e0e2"
+            },
             "dist": {
-                "type": "path",
-                "url": "./bundles/itk-dev/aarhus-kommune-management-bundle",
-                "reference": "7dd458944e049e43c6ed5b6c8c61e19df3328e3e"
+                "type": "zip",
+                "url": "https://api.github.com/repos/rimi-itk/aarhus-kommune-management-bundle/zipball/e1a05d2276d4a03ff255f817bbfc3a8beee9e0e2",
+                "reference": "e1a05d2276d4a03ff255f817bbfc3a8beee9e0e2",
+                "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.3",
@@ -1684,7 +1690,12 @@
                     "name": "Mikkel Ricky",
                     "email": "rimi@aarhus.dk"
                 }
-            ]
+            ],
+            "support": {
+                "source": "https://github.com/rimi-itk/aarhus-kommune-management-bundle/tree/master",
+                "issues": "https://github.com/rimi-itk/aarhus-kommune-management-bundle/issues"
+            },
+            "time": "2019-07-27T13:48:46+00:00"
         },
         {
             "name": "jdorn/sql-formatter",

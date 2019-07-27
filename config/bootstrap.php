@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of itk-dev/aarhus-kommune-management-symfony-4.
+ * This file is part of itk-dev/aarhus-kommune-management-symfony.
  *
  * (c) 2019 ITK Development
  *
